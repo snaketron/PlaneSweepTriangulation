@@ -21,7 +21,7 @@ class DrawPanel extends JPanel {
 		super.paintComponent(g);
 		
 		for(Point p : points) {
-			g.fillRect((int)p.getX(), (int)p.getY(), 6, 6);
+			g.fillRect((int)p.getX(), (int)p.getY(), 4, 4);
 			
 			for(Point np : p.getNeighbors()) {
 				g.drawLine((int)p.getX(), (int)p.getY(), (int)np.getX(), (int)np.getY());

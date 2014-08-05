@@ -69,27 +69,9 @@ public class TriangleOps {
 	}
 	
 	
-	private static ArrayList<Point> findIntermediatePoints(Point pivot, Point[] tangents, ArrayList<Point> boundaryPoints) {
-//		Point [] neighbors = new Point[tangents[0].getNeighbors().size()];
-//		int index = 0;
-//		for(Point neighbor : tangents[0].getNeighbors()) {
-//			if(boundaryPoints.contains(neighbor)) {
-//				neighbors[index] = neighbor;
-//				index++;
-//			}
-//		}
-//		
-//		double first = getEuclideanDist(neighbors[0], pivot);
-//		double second = getEuclideanDist(neighbors[1], pivot);
-//		
-//		Point next;
-//		if(first > second) {
-//			next = neighbors[1];
-//		}
-//		else {
-//			next = neighbors[0];
-//		}
-//		
+	private static ArrayList<Point> findIntermediatePoints(Point pivot, Point[] tangents, 
+			ArrayList<Point> boundaryPoints) {
+		
 		ArrayList<Point> allPoints = new ArrayList<Point>();
 		allPoints.add(tangents[0]);
 		allPoints.add(tangents[1]);
@@ -97,23 +79,17 @@ public class TriangleOps {
 		Path2D path = new Path2D.Double();
 		
 		path.moveTo(tangents[0].getX(), tangents[0].getY());
-		path.moveTo(tangents[1].getX(), tangents[1].getY());
-		path.moveTo(pivot.getX(), pivot.getY());
-			
-//		if(!allPoints.contains(next)) {
-//			allPoints.add(next);
-//		}
-//		
-//		while(next != tangents[1]) {
-//			next = getNextNeighbor(next, allPoints, boundaryPoints);
-//			
-//			if(next != null && !allPoints.contains(next)) {
-//				allPoints.add(next);
-//			}
-//			else {
-//				break;
-//			}
-//		}
+		path.lineTo(tangents[1].getX(), tangents[1].getY());
+		path.lineTo(pivot.getX(), pivot.getY());
+		path.closePath();
+		
+		for(Point p : boundaryPoints) {
+			if(path.contains(p.getX(), p.getY())) {
+				if(!allPoints.contains(p)) {
+					allPoints.add(p);
+				}
+			}
+		}
 		
 		return allPoints;
 	}

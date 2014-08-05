@@ -67,6 +67,18 @@ public class Main {
 			
 //			sc.next();
 			
+			
+			DrawPanel view2 = new DrawPanel(convexHull);
+			frame.getContentPane().removeAll();
+			frame.getContentPane().add(view2);
+
+			view2.validate();
+			view2.repaint();
+			frame.validate();
+			frame.repaint();
+			
+//			sc.next();
+			
 			ArrayList<Point> connections = TriangleOps.findTangentPoints(p, convexHull);
 			
 			for(Point cp : connections) {
@@ -77,14 +89,7 @@ public class Main {
 			convexHull.add(p);
 		}
 		
-		DrawPanel view = new DrawPanel(convexHull);
-		frame.getContentPane().removeAll();
-		frame.getContentPane().add(view);
-
-		view.validate();
-		view.repaint();
-		frame.validate();
-		frame.repaint();
+		
 		
 	}
 	

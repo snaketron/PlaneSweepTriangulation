@@ -1,8 +1,14 @@
 package temp;
 
+import java.awt.Polygon;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Area;
+import java.awt.geom.Path2D;
+import java.awt.geom.PathIterator;
 import java.util.ArrayList;
 
 import main.Point;
+import main.TriangleOps;
 
 public class TempClass {
 
@@ -13,28 +19,29 @@ public class TempClass {
 		Point p4 = new Point(45, 10);
 		
 		
-		Point pivot = new Point(80, 30);
+		Path2D path = new Path2D.Double();
+		path.moveTo(p1.getX(), p1.getY());
+		path.lineTo(p2.getX(), p2.getY());
+		path.lineTo(p3.getX(), p3.getY());
+		path.lineTo(p4.getX(), p4.getY());
+//		path.closePath();
 		
-		ArrayList<Point> convexHull = new ArrayList<Point>();
-		convexHull.add(p1);
-		convexHull.add(p2);
-		convexHull.add(p3);
-		convexHull.add(p4);
 		
+//		Polygon pol = new Polygon();
+//		pol.addPoint((int)p1.getX(), (int)p1.getY());
+//		pol.addPoint((int)p2.getX(), (int)p2.getY());
+//		pol.addPoint((int)p3.getX(), (int)p3.getY());
+//		pol.addPoint((int)p4.getX(), (int)p4.getY());
+//		
 		
-		for(Point p : convexHull) {
-			for(Point pp : convexHull) {
-				if(!p.equals(pp)) {
-					double value = isLeft(pivot, p, pp);
-					System.out.println(value + "  to:" + p.toCoord() + " comp:" + pp.toCoord());
-				}
-			}
-		}
+		Point pivot = new Point(50, 35);
+//		System.out.println(pol.contains(p2.getX(), p2.getY()));
 
-	}
-	
-	public static double isLeft(Point P0, Point P1, Point P2) {
-	    return (P1.getX() - P0.getX())*(P2.getY() - P0.getY()) - (P2.getX() - P0.getX())*(P1.getY() - P0.getY());
+		System.out.println(path.contains(21, 21));
+//		System.out.println(path.contains(p2.getX(), p2.getY()));
+		
+		
+
 	}
 
 }
