@@ -1,0 +1,4 @@
+PlaneSweepTriangulation
+=======================
+
+"a slow triangulation"
