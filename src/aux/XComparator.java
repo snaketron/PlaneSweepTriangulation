@@ -1,6 +1,8 @@
-package main;
+package aux;
 
 import java.util.Comparator;
+
+import main.Point;
 
 public class XComparator implements Comparator<Point> {
     @Override

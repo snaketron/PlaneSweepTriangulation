@@ -1,14 +1,13 @@
-package main;
+package panel;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-class DrawPanel extends JPanel {
-	/**
-	 * 
-	 */
+import main.Point;
+
+public class DrawPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Point> points;
 

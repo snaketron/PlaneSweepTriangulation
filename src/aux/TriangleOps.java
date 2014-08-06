@@ -1,8 +1,9 @@
-package main;
+package aux;
 
-import java.awt.Polygon;
 import java.awt.geom.Path2D;
 import java.util.ArrayList;
+
+import main.Point;
 
 public class TriangleOps {
 
@@ -16,10 +17,8 @@ public class TriangleOps {
 			}
 		}
 		
-		
 		Point [] tangents = findTangents(pivot, boundaryPoints);
 		ArrayList<Point> points = findIntermediatePoints(pivot, tangents, boundaryPoints);
-		
 		
 		return points;
 	}
@@ -69,8 +68,8 @@ public class TriangleOps {
 	}
 	
 	
-	private static ArrayList<Point> findIntermediatePoints(Point pivot, Point[] tangents, 
-			ArrayList<Point> boundaryPoints) {
+	private static ArrayList<Point> findIntermediatePoints(Point pivot, 
+			Point[] tangents, ArrayList<Point> boundaryPoints) {
 		
 		ArrayList<Point> allPoints = new ArrayList<Point>();
 		allPoints.add(tangents[0]);
@@ -104,23 +103,5 @@ public class TriangleOps {
 	 **/
 	public static double isLeft(Point P0, Point P1, Point P2) {
 	    return (P1.getX() - P0.getX())*(P2.getY() - P0.getY()) - (P2.getX() - P0.getX())*(P1.getY() - P0.getY());
-	}
-	
-	
-	private static double getEuclideanDist(Point p1, Point p2) {
-		return Math.sqrt(Math.pow((p1.getX() - p2.getX()), 2) + Math.pow((p1.getY() - p2.getY()), 2));
-	}
-	
-	
-	private static Point getNextNeighbor(Point point, ArrayList<Point> allPoints, ArrayList<Point> boundaryPoints) {
-		ArrayList<Point> neighbors = point.getNeighbors();
-		neighbors.retainAll(boundaryPoints);
-		neighbors.retainAll(allPoints);
-		
-		if(neighbors.size() > 0) {
-			return neighbors.get(0);
-		}
-		
-		return null;
 	}
 }
